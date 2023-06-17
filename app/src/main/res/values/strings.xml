@@ -22,4 +22,5 @@
     <string name="btnPercentage">%</string>
     <string name="btnClr">C</string>
     <string name="btn_Zero">00</string>
+    <string name="tvAns"> </string>
 </resources>

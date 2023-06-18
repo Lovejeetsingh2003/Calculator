@@ -100,9 +100,11 @@ class MainActivity : AppCompatActivity() {
             binding.tvNumber.text = ""
         }
         binding.btnDel.setOnClickListener {
-            var del :Any = binding.tvNumber.text.last()
-            
-            binding.tvNumber.text = del.toString()
+
+            var str: String = binding.tvNumber.text.toString()
+            if (str != "") {
+                str = str.substring(0, str.length - 1)
+                binding.tvNumber.text = str }
         }
         binding.btnResult.setOnClickListener {
 

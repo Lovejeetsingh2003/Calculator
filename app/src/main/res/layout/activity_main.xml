@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/black"
     tools:context=".MainActivity"
     android:background="@color/white">
 
@@ -13,7 +14,7 @@
         android:id="@+id/tvCalculator"
         android:text="@string/tvCalculator"
         android:textSize="40sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:fontFamily="sans-serif-black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,7 @@
         android:gravity="right"
         android:padding="20dp"
         android:text="@string/tvNumber"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/tlCalculator"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,11 +59,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey1"
                 android:fontFamily="sans-serif-black"
                 android:hint="@string/btnPercentage"
                 android:paddingVertical="20dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp" />
 
             <Button
@@ -73,30 +75,34 @@
                 android:fontFamily="sans-serif-black"
                 android:paddingVertical="20dp"
                 android:hint="@string/btnClr"
-                android:background="@color/black"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/grey1"
                 android:textSize="30sp"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/black" />
+
+
             <Button
                 android:id="@+id/btnDel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
+                android:layout_marginHorizontal="2dp"
+                android:backgroundTint="@color/grey1"
                 android:hint="@string/btnDel"
                 android:paddingVertical="20dp"
-                android:layout_marginHorizontal="2dp"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp" />
-
 
             <Button
                 android:id="@+id/btnDiv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:hint="@string/btnDiv"
                 android:layout_marginHorizontal="2dp"
-                android:paddingVertical="20dp"
+                android:backgroundTint="@color/yellow"
                 android:fontFamily="sans-serif-black"
+                android:hint="@string/btnDiv"
+                style="?android:attr/buttonBarButtonStyle"
+                android:paddingVertical="20dp"
                 android:textColorHint="@color/white"
                 android:textSize="30sp" />
 
@@ -112,8 +118,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btnSeven"
                 android:paddingVertical="20dp"
+                style="?android:attr/buttonBarButtonStyle"
                 android:hint="@string/btnSeven"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
                 android:layout_marginHorizontal="2dp"
                 android:textColorHint="@color/white" />
@@ -122,8 +129,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btnEight"
                 android:paddingVertical="20dp"
+                style="?android:attr/buttonBarButtonStyle"
                 android:hint="@string/btnEight"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
                 android:layout_marginHorizontal="2dp"
                 android:textColorHint="@color/white" />
@@ -133,7 +141,8 @@
                 android:id="@+id/btnNine"
                 android:paddingVertical="20dp"
                 android:hint="@string/btnNine"
-                android:background="@color/black"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
                 android:layout_marginHorizontal="2dp"
                 android:textColorHint="@color/white" />
@@ -143,11 +152,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:background="@color/black"
+                android:backgroundTint="@color/yellow"
                 android:fontFamily="sans-serif-black"
                 android:hint="@string/btnMul"
                 android:paddingVertical="20dp"
                 android:textColorHint="@color/white"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp" />
 
         </TableRow>
@@ -164,8 +174,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btnFour"
                 android:paddingVertical="20dp"
+                style="?android:attr/buttonBarButtonStyle"
                 android:hint="@string/btnFour"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
                 android:layout_marginHorizontal="2dp"
                 android:textSize="30sp"
                 android:textColorHint="@color/white" />
@@ -176,25 +187,28 @@
                 android:paddingVertical="20dp"
                 android:layout_marginHorizontal="2dp"
                 android:hint="@string/btnFive"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                style="?android:attr/buttonBarButtonStyle" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnSix"
                 android:paddingVertical="20dp"
                 android:hint="@string/btnSix"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
                 android:textColorHint="@color/white"
-                android:layout_marginHorizontal="2dp" />
+                android:layout_marginHorizontal="2dp"
+                style="?android:attr/buttonBarButtonStyle" />
             <Button
                 android:id="@+id/btnMin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:background="@color/black"
+                android:backgroundTint="@color/yellow"
+                style="?android:attr/buttonBarButtonStyle"
                 android:fontFamily="sans-serif-black"
                 android:hint="@string/btnMin"
                 android:paddingVertical="20dp"
@@ -215,7 +229,8 @@
                 android:layout_marginHorizontal="2dp"
                 android:paddingVertical="20dp"
                 android:hint="@string/btnOne"
-                android:background="@color/black"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
                 android:textColorHint="@color/white" />
             <Button
@@ -225,7 +240,8 @@
                 android:paddingVertical="20dp"
                 android:layout_marginHorizontal="2dp"
                 android:hint="@string/btnTwo"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp"
                 android:textColorHint="@color/white" />
             <Button
@@ -235,7 +251,8 @@
                 android:paddingVertical="20dp"
                 android:layout_marginHorizontal="2dp"
                 android:hint="@string/btnThree"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp"
                 android:textColorHint="@color/white" />
             <Button
@@ -244,8 +261,9 @@
                 android:id="@+id/btnAdd"
                 android:paddingVertical="20dp"
                 android:hint="@string/btnAdd"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_marginHorizontal="2dp"
-                android:background="@color/black"
+                android:backgroundTint="@color/yellow"
                 android:textSize="30sp"
                 android:textColorHint="@color/white" />
 
@@ -256,16 +274,19 @@
             android:id="@+id/trRow5"
             android:layout_height="wrap_content"
             android:layout_marginVertical="2dp">
+
             <Button
+                android:id="@+id/btn2Zero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn2Zero"
                 android:layout_marginHorizontal="2dp"
-                android:paddingVertical="20dp"
+                android:backgroundTint="@color/grey"
                 android:hint="@string/btn_Zero"
-                android:background="@color/black"
-                android:textSize="30sp"
-                android:textColorHint="@color/white" />
+                android:paddingVertical="20dp"
+                android:textColorHint="@color/white"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="30sp" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -273,28 +294,31 @@
                 android:paddingVertical="20dp"
                 android:layout_marginHorizontal="2dp"
                 android:hint="@string/btnZero"
-                android:background="@color/black"
+                style="?android:attr/buttonBarButtonStyle"
+                android:backgroundTint="@color/grey"
                 android:textSize="30sp"
                 android:textColorHint="@color/white" />
             <Button
                 android:id="@+id/btnDot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
+                android:backgroundTint="@color/grey"
                 android:layout_marginHorizontal="2dp"
                 android:hint="@string/btnDot"
                 android:paddingVertical="20dp"
                 android:textColorHint="@color/white"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp" />
             <Button
                 android:id="@+id/btnResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
-                android:background="@color/black"
+                android:backgroundTint="@color/yellow"
                 android:hint="@string/btResult"
                 android:paddingVertical="20dp"
                 android:textColorHint="@color/white"
+                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp" />
         </TableRow>
     </TableLayout>

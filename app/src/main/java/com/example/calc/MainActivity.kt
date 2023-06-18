@@ -114,10 +114,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-        private fun addToInputText(buttonValue: String): String {
 
-            return binding.tvNumber.text.toString() + "" + buttonValue
-        }
 
         private fun getInputExpression(): String {
             var expression = binding.tvNumber.text.replace(Regex("÷"), "/")
@@ -126,20 +123,17 @@ class MainActivity : AppCompatActivity() {
             return expression
         }
 
-         fun showResult() {
+         private fun showResult() {
              try {
                  val expression = getInputExpression()
                  val result = Expression(expression).calculate()
                  if (result.isNaN()) {
                      binding.tvNumber.text = ""
-                     binding.tvNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
                  } else {
                      binding.tvNumber.text = DecimalFormat("0.######").format(result).toString()
-                     binding.tvNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
                  }
              } catch (e: Exception) {
                  binding.tvNumber.text = ""
-                 binding.tvNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
              }
          }}
 

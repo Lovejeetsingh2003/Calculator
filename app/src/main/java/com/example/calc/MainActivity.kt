@@ -1,27 +1,25 @@
 package com.example.calc
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog.show
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.calc.databinding.ActivityMainBinding
-import java.lang.reflect.Array
-import javax.xml.xpath.XPathExpression
-import kotlin.collections.ArrayList
-
-
+import org.mariuszgromada.math.mxparser.Expression
+import org.mozilla.javascript.Context
+import org.mozilla.javascript.Scriptable
+import java.text.DecimalFormat
 
 
 class MainActivity : AppCompatActivity() {
 
-
     lateinit var binding: ActivityMainBinding
-    private var result : Int = 0
-    var value1 = 0
-    var x = 0
+    lateinit var data  : String
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,82 +28,121 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btn2Zero.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "00")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "00"
         }
         binding.btnZero.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "0")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "0"
         }
         binding.btnDot.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + ".")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = "$data."
         }
         binding.btnOne.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "1")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "1"
         }
         binding.btnTwo.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "2")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "2"
         }
         binding.btnThree.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "3")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "3"
         }
         binding.btnFour.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "4")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "4"
         }
         binding.btnFive.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "5")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "5"
         }
         binding.btnSix.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "6")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "6"
         }
         binding.btnSeven.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "7")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "7"
         }
         binding.btnEight.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "8")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "8"
         }
         binding.btnNine.setOnClickListener {
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + "9")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = data + "9"
         }
 
         binding.btnAdd.setOnClickListener {
-            value1 = binding.tvNumber.text.toString().toInt()
-            result = value1.toString().toInt()
-            binding.tvNumber.text = result.toString()
-            result += value1
-            binding.tvNumber.text = result.toString()
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + " + ")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = "$data + "
         }
         binding.btnMin.setOnClickListener {
-             value1  = binding.tvNumber.text.toString().toInt()
-             x = value1.toString().toInt()
-            result = x - value1
-            value1 = 0
-            binding.tvNumber.text = ""
-            binding.tvNumber.text = result.toString()
-
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + " - ")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = "$data - "
         }
         binding.btnMul.setOnClickListener {
-            value1  = binding.tvNumber.text.toString().toInt()
-            x = value1.toString().toInt()
-            result = x * value1
-            value1 = 0
-            binding.tvNumber.text = ""
-            binding.tvNumber.text = result.toString()
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + " × ")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = "$data × "
         }
         binding.btnDiv.setOnClickListener {
-            value1  = binding.tvNumber.text.toString().toInt()
-            x = value1.toString().toInt()
-            result = x / value1
-            value1 = 0
-            binding.tvNumber.text = ""
-            binding.tvNumber.text = result.toString()
-            binding.tvNumber.text = (binding.tvNumber.text.toString() + " ÷ ")
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = "$data ÷ "
+        }
+        binding.btnPercentage.setOnClickListener {
+            data = binding.tvNumber.text.toString()
+            binding.tvNumber.text = "$data % "
         }
         binding.btnClr.setOnClickListener {
             binding.tvNumber.text = ""
         }
-        }}
+        binding.btnDel.setOnClickListener {
+            var del :Any = binding.tvNumber.text.last()
+            
+            binding.tvNumber.text = del.toString()
+        }
+        binding.btnResult.setOnClickListener {
+
+            showResult()
+
+        }
+    }
+
+
+        private fun addToInputText(buttonValue: String): String {
+
+            return binding.tvNumber.text.toString() + "" + buttonValue
+        }
+
+        private fun getInputExpression(): String {
+            var expression = binding.tvNumber.text.replace(Regex("÷"), "/")
+            expression = expression.replace(Regex("×"), "*")
+            expression = expression.replace(Regex("%"), "/100")
+            return expression
+        }
+
+         fun showResult() {
+             try {
+                 val expression = getInputExpression()
+                 val result = Expression(expression).calculate()
+                 if (result.isNaN()) {
+                     binding.tvNumber.text = ""
+                     binding.tvNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
+                 } else {
+                     binding.tvNumber.text = DecimalFormat("0.######").format(result).toString()
+                     binding.tvNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
+                 }
+             } catch (e: Exception) {
+                 binding.tvNumber.text = ""
+                 binding.tvNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
+             }
+         }}
+
+
+
 
 
 

@@ -64,8 +64,8 @@
                 android:hint="@string/btnPercentage"
                 android:paddingVertical="20dp"
                 android:textColorHint="@color/black"
-                style="?android:attr/buttonBarButtonStyle"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:layout_width="0dp"
@@ -252,9 +252,9 @@
                 android:layout_marginHorizontal="2dp"
                 android:hint="@string/btnThree"
                 android:backgroundTint="@color/grey"
-                style="?android:attr/buttonBarButtonStyle"
                 android:textSize="30sp"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                style="?android:attr/buttonBarButtonStyle" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

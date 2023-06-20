@@ -113,9 +113,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-
         private fun getInputExpression(): String {
             var expression = binding.tvNumber.text.replace(Regex("÷"), "/")
             expression = expression.replace(Regex("×"), "*")
